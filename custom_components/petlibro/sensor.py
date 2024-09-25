@@ -107,7 +107,8 @@ DEVICE_SENSOR_MAP: dict[type[Device], list[PetLibroSensorEntityDescription]] = {
             icon="mdi:scale",
             native_unit_of_measurement_fn=unit_of_measurement_feeder,
             device_class_fn=device_class_feeder,
-            state_class=SensorStateClass.TOTAL_INCREASING
+            state_class=SensorStateClass.TOTAL_INCREASING,
+            suggested_display_precision=2
         ),
         PetLibroSensorEntityDescription[GranarySmartFeeder](
             key="today_feeding_times",
