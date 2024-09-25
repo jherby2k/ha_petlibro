@@ -7,7 +7,8 @@ class GranarySmartFeeder(Feeder):
     async def refresh(self):
         await super().refresh()
         self.update_data({
-            "grainStatus": await self.api.device_grain_status(self.serial)
+            "grainStatus": await self.api.device_grain_status(self.serial),
+            "realInfo": await self.api.device_real_info(self.serial)
         })
 
     @property
@@ -25,3 +26,7 @@ class GranarySmartFeeder(Feeder):
     @property
     def today_feeding_times(self) -> int:
         return cast(int, self._data.get("grainStatus", {}).get("todayFeedingTimes"))
+
+    @property
+    def food_low(self) -> bool:
+        return not bool(self._data.get("realInfo", {}).get("surplusGrain"))

@@ -19,6 +19,7 @@ PLATFORMS_BY_TYPE = {
     ),
     GranarySmartFeeder: (
         Platform.SENSOR,
+        Platform.BINARY_SENSOR,
     ),
 }
 
